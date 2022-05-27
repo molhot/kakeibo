@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>家計簿アプリ</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    </head>
+    <body>
+        <h1>
+            {{ year }}年{{ month }}月
+        </h1>
+        <main>
+            <h2>
+                日々の出費を見えるかしませんか？
+            </h2>
+            <div class="regist_login_login_main_ex1">
+                このアプリで出来る事は以下のようなことです
+            </div>
+            <ul class="regist_login_login_main_ul">
+                <li class="regist_login_login_main_ul_li">
+                    出費がグラフで見えます！
+                </li>
+                <li class="regist_login_login_main_ul_li">
+                    一日一回、必ず出費を記入することを求められます！<br>
+                    これで入力忘れもなくなります！
+                </li>
+            </ul>
+            <script type="text/javascript" src="{% static 'js/alart.js' %}"></script>
+            <div class="regist_login_login_main_account">
+                アカウントがある方はこちらから！
+            </div>
+            <form action="/" method="post">
+                {% csrf_token %}
+                <div class="regist_login_login_main_mailornick">
+                    メールアドレスの入力<br>もしくはあだ名の入力をお願いします！
+                </div>
+                <input class="regist_login_login_main_input1" type="text" name="mail_or_nickname" placeholder="mailaddress" minlength="1">
+                <div class="regist_login_login_main_pass">
+                    パスワードの入力をお願いします！
+                </div>
+                <input class="regist_login_login_main_input2" type="text" name="password" placeholder="password" minlength="8">
+                <br>
+                <input type="submit" value="入力が終わればクリック！">
+            </form>
+            <hr>
+            <div class="regist_login_login_main_regist">
+                もしアカウントがない方は<a href="/regist/">こちら</a>から登録お願いします！
+            </div>
+        </main>
+    </body>
+</html>    
