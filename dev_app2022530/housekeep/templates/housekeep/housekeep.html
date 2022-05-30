@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>
+        test
+    </title>
+    <script type="text/javascript" src="{% static 'js/unload.js' %}"></script>
+</head>
+<body>
+    {{test}}
+    {% for num in nums %}
+    <div>
+        {{ num.session_num }}
+    </div>
+    {% endfor %}
+    <form action="logout/" method="get">
+        <input type="submit" value="ログアウト">
+    </form>
+</body>
