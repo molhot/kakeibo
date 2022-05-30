@@ -1,3 +1,4 @@
+from urllib.parse import urlencode
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from housekeep.models import Session
@@ -46,8 +47,6 @@ def login(request):
                 session_num = count,
                 name = name,
             )
-            print('check')
-            print(app_name)
             return redirect('main/')
         elif count == 0:
             count = count + 1

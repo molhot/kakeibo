@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from housekeep.views import housekeeping
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('regist_login.urls')),
+    path('main',include('housekeep.urls')),
+    path('main/show_all/<int:id>/', housekeeping, name='housekeeping'),
 ]
