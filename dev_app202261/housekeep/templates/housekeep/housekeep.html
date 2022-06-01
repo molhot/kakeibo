@@ -1,0 +1,9 @@
+{% extends 'housekeep/template.html' %}
+{% block sidebar %}
+<div>
+    {{ test }}<br>
+    {% for num in nums %}
+        {{ num }}
+    {% endfor %}
+</div>
+{% endblock %}
