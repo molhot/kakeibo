@@ -11,10 +11,14 @@ def main(request):
     return redirect('housekeeping',id)
 
 def housekeeping(request, id):
-    session = Session.objects.all()
+    sessions = Session.objects.all()
+    for session in sessions:
+        user_name = session.name
+    items = Billing.objects.filter(user_name = user_name)
     context = {
         'test': 'test',
-        'nums' : session,
+        'nums' : sessions,
+        'items' : items,
     }
 
     if request.method == 'POST':
