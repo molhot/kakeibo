@@ -1,0 +1,15 @@
+header{
+    display: flex;
+}
+
+.header_left_content{
+    margin-left: 70%;
+}
+
+.header_center_content{
+    margin-left: 10%;
+}
+
+.header_right_content{
+    margin-left: 10%;
+}

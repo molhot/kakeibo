@@ -14,6 +14,12 @@ def housekeeping(request, id):
     sessions = Session.objects.all()
     for session in sessions:
         user_name = session.name
+    items = Billing.objects.filter(user_name = user_name)
+    context = {
+        'test': 'test',
+        'nums' : sessions,
+        'items' : items,
+    }
 
     if request.method == 'POST':
         data = request.POST
@@ -32,27 +38,6 @@ def housekeeping(request, id):
             category = category,
             detail = detail,
         )
-    
-    items = Billing.objects.filter(user_name = user_name).order_by('created_date')
-    now_data = datetime.datetime.now()
-    month = now_data.month
-    all_info = []
-    day_cost_list = []
-    for item in items:
-        date_info = item.created_date
-        month_info = (date_info.split('-'))[1]
-        if month_info == month:
-            day_cost_list.append((date_info.split('-'))[2])
-            day_cost_list.append(item.cost)
-            all_info.append(day_cost_list)
-            day_cost_list = []
-    context = {
-        'test': 'test',
-        'nums' : sessions,
-        'items' : items,
-    }
-
-
 
     return render(request, 'housekeep/housekeep.html', context)
 
