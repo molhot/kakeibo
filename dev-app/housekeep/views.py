@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Billing, Session
 from .forms import SpendingBilling
+import matplotlib.pyplot as plt
 import datetime
 
 # Create your views here.
@@ -40,12 +41,30 @@ def housekeeping(request, id):
     day_cost_list = []
     for item in items:
         date_info = item.created_date
-        month_info = (date_info.split('-'))[1]
+        print(date_info)
+        print("check")
+        month_info = date_info.month
         if month_info == month:
-            day_cost_list.append((date_info.split('-'))[2])
+            day_cost_list.append(date_info.day)
             day_cost_list.append(item.cost)
             all_info.append(day_cost_list)
             day_cost_list = []
+    print(all_info)
+    if(month_info == 2 or month_info == 4 or month_info == 6 or month_info == 9 or month_info == 11):
+        graph_day = [i for i in range(1,31)]
+        cost_day = [0 for i in range(1,31)]
+    else:
+        graph_day = [i for i in range(1,32)]
+        cost_day = [0 for i in range(1,32)]
+    i = 0
+    while(i != len(all_info) - 1):
+        month_info_any = all_info[i][0]
+        cost_day[month_info_any - 1] = cost_day[month_info_any - 1] + all_info[i][1]
+        i = i + 1
+    print(graph_day)
+    print(cost_day)
+    plt.plot(graph_day, cost_day)
+    plt.savefig('figure.png')
     context = {
         'test': 'test',
         'nums' : sessions,
