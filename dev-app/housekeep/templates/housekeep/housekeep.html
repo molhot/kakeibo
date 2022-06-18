@@ -1,11 +1,39 @@
 {% extends 'housekeep/template.html' %}
 {% block sidebar %}
-<div>
-    {% for num in nums %}
-        {{ num }}<br>
-    {% endfor %}
-    {% for item in items %}
-        {{ item.detail }}{{ item.cost }}<br>
-    {% endfor %}
+<div class="maincontent">
+    <div class="in_out_com">
+        <h2>
+            直近10件の収支です
+        </h2>
+        <table>
+            <tr>
+                <th>
+                    名前
+                </th>
+                <th>
+                    値段
+                </th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>
+                    {{ item.detail }}
+                </td>
+                <td>
+                    {{ item.cost }}
+                </td>
+                <td>
+                    {{ item.created_date }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="housecom">
+        <h2>
+            今月の出費
+        </h2>
+        <img src="/static/image/figure.png">
+    </div>
 </div>
 {% endblock %}

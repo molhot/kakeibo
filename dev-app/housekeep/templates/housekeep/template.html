@@ -4,10 +4,10 @@
     <title>
         家計簿アプリ
     </title>
-    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/template.css' %}">
 </head>
 <body>
-    <header>
+    <div class="header">
         <div class="header_left_content">
             今までの詳しい出費
         </div>
@@ -24,7 +24,7 @@
                 <input type="submit" value="ログアウト">
             </form>
         </div>
-    </header>
+    </div>
     {% block sidebar %}
 
     {% endblock %}

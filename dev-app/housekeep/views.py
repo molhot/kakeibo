@@ -34,7 +34,7 @@ def housekeeping(request, id):
             detail = detail,
         )
     
-    items = Billing.objects.filter(user_name = user_name).order_by('created_date')
+    items = Billing.objects.filter(user_name = user_name).order_by('-created_date')[:10]
     now_data = datetime.datetime.now()
     month = now_data.month
     all_info = []
@@ -63,11 +63,9 @@ def housekeeping(request, id):
         i = i + 1
     print(graph_day)
     print(cost_day)
-    plt.plot(graph_day, cost_day)
-    plt.savefig('figure.png')
+    plt.bar(graph_day, cost_day)
+    plt.savefig('housekeep/static/image/figure.png')
     context = {
-        'test': 'test',
-        'nums' : sessions,
         'items' : items,
     }
 

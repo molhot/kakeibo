@@ -1,15 +1,31 @@
-header{
+html{
+    width:1280px;
+}
+
+body{
+    width: 1280px;
+}
+
+.header{
+    width: 1280px;
     display: flex;
 }
 
 .header_left_content{
-    margin-left: 70%;
+    width: 200px;
+    margin-left: 10%;
 }
 
 .header_center_content{
+    width: 200px;
     margin-left: 10%;
 }
 
 .header_right_content{
+    width: 200px;
     margin-left: 10%;
+}
+
+.maincontent{
+    display: flex;
 }
